@@ -15,7 +15,10 @@ public class HiberApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HiberApplication.class, args);
-        ShopService shopService = new ShopService();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        ShopService shopService = context.getBean("shopService", ShopService.class);
+
         shopService.run();
     }
 
